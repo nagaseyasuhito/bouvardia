@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>net.nagaseyasuhito</groupId>
 	<artifactId>bouvardia</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<packaging>war</packaging>
 
 	<name>Bouvardia</name>
@@ -46,8 +46,8 @@
 
 				<javax.persistence.jdbc.driver>com.mysql.jdbc.Driver</javax.persistence.jdbc.driver>
 				<javax.persistence.jdbc.url>jdbc:mysql://localhost/bouvardia-integration</javax.persistence.jdbc.url>
-				<javax.persistence.jdbc.user></javax.persistence.jdbc.user>
-				<javax.persistence.jdbc.password></javax.persistence.jdbc.password>
+				<javax.persistence.jdbc.user />
+				<javax.persistence.jdbc.password />
 			</properties>
 		</profile>
 		<profile>
@@ -58,8 +58,8 @@
 
 				<javax.persistence.jdbc.driver>com.mysql.jdbc.Driver</javax.persistence.jdbc.driver>
 				<javax.persistence.jdbc.url>jdbc:mysql://localhost/bouvardia-production</javax.persistence.jdbc.url>
-				<javax.persistence.jdbc.user></javax.persistence.jdbc.user>
-				<javax.persistence.jdbc.password></javax.persistence.jdbc.password>
+				<javax.persistence.jdbc.user />
+				<javax.persistence.jdbc.password />
 			</properties>
 		</profile>
 	</profiles>
