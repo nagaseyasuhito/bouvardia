@@ -8,9 +8,9 @@
 	<name>Bouvardia</name>
 
 	<scm>
-		<url>scm:git:https://github.com/nagaseyasuhito/bouvardia.git</url>
-		<connection>scm:git:https://github.com/nagaseyasuhito/bouvardia.git</connection>
-		<developerConnection>scm:git:https://github.com/nagaseyasuhito/bouvardia.git</developerConnection>
+		<url>scm:git:https://nagaseyasuhito@github.com/nagaseyasuhito/bouvardia.git</url>
+		<connection>scm:git:https://nagaseyasuhito@github.com/nagaseyasuhito/bouvardia.git</connection>
+		<developerConnection>scm:git:https://nagaseyasuhito@github.com/nagaseyasuhito/bouvardia.git</developerConnection>
 	</scm>
 
 	<distributionManagement>
@@ -155,7 +155,7 @@
 				<version>2.2.2</version>
 				<configuration>
 					<tagNameFormat>@{project.version}</tagNameFormat>
-					<goals>beanstalk:upload-source-bundle beanstalk:create-application-version beanstalk:update-environment beanstalk:clean-previous-versions</goals>
+					<goals>clean package beanstalk:upload-source-bundle beanstalk:create-application-version beanstalk:update-environment beanstalk:clean-previous-versions</goals>
 				</configuration>
 			</plugin>
 		</plugins>
