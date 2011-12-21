@@ -13,13 +13,6 @@
 		<developerConnection>scm:git:https://github.com/nagaseyasuhito/bouvardia.git</developerConnection>
 	</scm>
 
-	<pluginRepositories>
-		<pluginRepository>
-			<id>Codehaus repository</id>
-			<url>http://repository.codehaus.org/</url>
-		</pluginRepository>
-	</pluginRepositories>
-
 	<profiles>
 		<profile>
 			<id>development</id>
