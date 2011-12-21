@@ -25,6 +25,8 @@ public class IdenticonResourceImpl implements IdenticonResource {
 
     public static final int MAXIMUM_SIZE = 512;
 
+    private static final ThreadLocal<MessageDigest> messageDigest = new ThreadLocal<MessageDigest>();
+
     @Override
     public Response get(String value) {
         return this.get(value, DEFAULT_SIZE);
@@ -40,15 +42,16 @@ public class IdenticonResourceImpl implements IdenticonResource {
     }
 
     private int buildHashedCode(String code) {
-        // MessageDigestはThread-safeではないので都度生成する
-        MessageDigest messageDigest;
-        try {
-            messageDigest = MessageDigest.getInstance(MESSAGE_DIGEST_ALGORITHM);
-        } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException(e);
+        if (IdenticonResourceImpl.messageDigest.get() == null) {
+            try {
+                IdenticonResourceImpl.messageDigest.set(MessageDigest.getInstance(MESSAGE_DIGEST_ALGORITHM));
+            } catch (NoSuchAlgorithmException e) {
+                throw new RuntimeException(e);
+            }
         }
 
-        byte[] hashedCode = messageDigest.digest(code.getBytes(Charset.forName("utf-8")));
+        byte[] hashedCode = IdenticonResourceImpl.messageDigest.get().digest(code.getBytes(Charset.forName("utf-8")));
+
         return ((hashedCode[0] & 0xFF) << 24) | ((hashedCode[1] & 0xFF) << 16) | ((hashedCode[2] & 0xFF) << 8) | (hashedCode[3] & 0xFF);
     }
 }
