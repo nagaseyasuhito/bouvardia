@@ -166,7 +166,7 @@
 				<version>2.2.2</version>
 				<configuration>
 					<tagNameFormat>@{project.version}</tagNameFormat>
-					<goals>clean package beanstalk:upload-source-bundle beanstalk:create-application-version beanstalk:update-environment beanstalk:clean-previous-versions -Dbeanstalk.versionsToKeep=2 -Dbeanstalk.dryRun=false</goals>
+					<goals>clean package beanstalk:upload-source-bundle beanstalk:create-application-version beanstalk:update-environment</goals>
 				</configuration>
 			</plugin>
 		</plugins>
