@@ -1,4 +1,4 @@
-package com.github.nagaseyasuhito.identicon;
+package com.github.nagaseyasuhito.api.identicon;
 
 import java.awt.image.BufferedImage;
 

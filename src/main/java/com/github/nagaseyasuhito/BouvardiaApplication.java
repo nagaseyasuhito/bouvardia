@@ -5,8 +5,9 @@ import java.util.Set;
 import javax.ws.rs.core.Application;
 import javax.ws.rs.core.MediaType;
 
-import com.github.nagaseyasuhito.identicon.impl.IdenticonResourceImpl;
-import com.google.common.collect.ImmutableSet;
+import com.github.nagaseyasuhito.api.identicon.impl.IdenticonResourceImpl;
+import com.github.nagaseyasuhito.api.textimage.impl.TextImageResourceImpl;
+import com.google.common.collect.Sets;
 
 public class BouvardiaApplication extends Application {
     /**
@@ -26,7 +27,13 @@ public class BouvardiaApplication extends Application {
 
     @Override
     public Set<Class<?>> getClasses() {
-        return ImmutableSet.<Class<?>> builder().add(BouvardiaExceptionMapper.class).add(IdenticonResourceImpl.class).build();
+        Set<Class<?>> classes = Sets.newHashSet();
+        classes.add(BouvardiaExceptionMapper.class);
+
+        classes.add(IdenticonResourceImpl.class);
+        classes.add(TextImageResourceImpl.class);
+
+        return classes;
     }
 
 }
