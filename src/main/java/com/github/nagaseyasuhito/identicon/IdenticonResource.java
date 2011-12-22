@@ -1,4 +1,4 @@
-package net.nagaseyasuhito.bouvardia.identicon;
+package com.github.nagaseyasuhito.identicon;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -6,7 +6,8 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
-import net.nagaseyasuhito.bouvardia.BouvardiaApplication;
+import com.github.nagaseyasuhito.BouvardiaApplication;
+
 
 @Path("identicon")
 public interface IdenticonResource {

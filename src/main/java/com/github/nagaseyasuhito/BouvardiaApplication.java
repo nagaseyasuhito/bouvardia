@@ -1,12 +1,12 @@
-package net.nagaseyasuhito.bouvardia;
+package com.github.nagaseyasuhito;
 
 import java.util.Set;
 
 import javax.ws.rs.core.Application;
 import javax.ws.rs.core.MediaType;
 
-import net.nagaseyasuhito.bouvardia.identicon.impl.IdenticonResourceImpl;
 
+import com.github.nagaseyasuhito.identicon.impl.IdenticonResourceImpl;
 import com.google.common.collect.ImmutableSet;
 
 public class BouvardiaApplication extends Application {

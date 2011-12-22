@@ -1,4 +1,4 @@
-package net.nagaseyasuhito.bouvardia.identicon.impl;
+package com.github.nagaseyasuhito.identicon.impl;
 
 import java.nio.charset.Charset;
 import java.security.MessageDigest;
@@ -7,10 +7,10 @@ import java.security.NoSuchAlgorithmException;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
-import net.nagaseyasuhito.bouvardia.identicon.IdenticonResource;
 
 import com.docuverse.identicon.IdenticonRenderer;
 import com.docuverse.identicon.NineBlockIdenticonRenderer2;
+import com.github.nagaseyasuhito.identicon.IdenticonResource;
 import com.google.common.collect.Ranges;
 
 public class IdenticonResourceImpl implements IdenticonResource {

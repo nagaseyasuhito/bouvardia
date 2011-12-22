@@ -8,7 +8,7 @@
 		<servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
 		<init-param>
 			<param-name>javax.ws.rs.Application</param-name>
-			<param-value>net.nagaseyasuhito.bouvardia.BouvardiaApplication</param-value>
+			<param-value>com.github.nagaseyasuhito.BouvardiaApplication</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
