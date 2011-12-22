@@ -7,8 +7,37 @@
 
 	<name>Bouvardia</name>
 
+	<licenses>
+		<license>
+			<name>Apache License Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+		</license>
+	</licenses>
+
+	<organization>
+		<name>nagaseyasuhito Architect works.</name>
+	</organization>
+
+	<developers>
+		<developer>
+			<id>nagaseyasuhito</id>
+			<email>nagase@nagaseyasuhito.net</email>
+			<organization>nagase</organization>
+			<timezone>+9</timezone>
+			<roles>
+				<role>architect</role>
+				<role>developer</role>
+			</roles>
+		</developer>
+	</developers>
+
+	<issueManagement>
+		<system>GitHub</system>
+		<url>https://github.com/nagaseyasuhito/bouvardia/issues</url>
+	</issueManagement>
+
 	<scm>
-		<url>scm:git:https://github.com/nagaseyasuhito/bouvardia.git</url>
+		<url>https://github.com/nagaseyasuhito/bouvardia.git</url>
 		<connection>scm:git:https://github.com/nagaseyasuhito/bouvardia.git</connection>
 		<developerConnection>scm:git:https://github.com/nagaseyasuhito/bouvardia.git</developerConnection>
 	</scm>
