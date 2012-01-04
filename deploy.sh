@@ -1,2 +1,2 @@
 #!/bin/sh
-mvn clean release:prepare release:perform
+mvn clean release:prepare release:perform -B

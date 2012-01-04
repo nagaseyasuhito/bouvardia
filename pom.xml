@@ -37,10 +37,21 @@
 	</issueManagement>
 
 	<scm>
-		<url>https://github.com/nagaseyasuhito/bouvardia.git</url>
+		<url>https://github.com/nagaseyasuhito/bouvardia</url>
 		<connection>scm:git:https://github.com/nagaseyasuhito/bouvardia.git</connection>
 		<developerConnection>scm:git:https://github.com/nagaseyasuhito/bouvardia.git</developerConnection>
 	</scm>
+
+	<repositories>
+		<repository>
+			<id>jboss</id>
+			<url>https://repository.jboss.org/nexus/content/groups/public/</url>
+		</repository>
+		<repository>
+			<id>github</id>
+			<url>http://mavenrepository.github.com/</url>
+		</repository>
+	</repositories>
 
 	<profiles>
 		<profile>
@@ -91,9 +102,12 @@
 		<com.h2database.h2.version>1.3.162</com.h2database.h2.version>
 		<mysql.mysql-connector-java.version>5.1.18</mysql.mysql-connector-java.version>
 
+		<org.hibernate.version>4.0.0.Final</org.hibernate.version>
+
 		<com.sun.jersey.version>1.9</com.sun.jersey.version>
 		<com.google.guava.guava.version>10.0.1</com.google.guava.guava.version>
 		<org.apache.commons.commons-lang3.version>3.1</org.apache.commons.commons-lang3.version>
+		<org.supercsv.SuperCSV.version>1.52</org.supercsv.SuperCSV.version>
 		<com.whirlycott.whirlycache.version>1.0.1</com.whirlycott.whirlycache.version>
 
 		<org.slf4j.version>1.6.4</org.slf4j.version>
@@ -230,6 +244,22 @@
 		</dependency>
 
 		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>${org.hibernate.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-c3p0</artifactId>
+			<version>${org.hibernate.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-search</artifactId>
+			<version>${org.hibernate.version}</version>
+		</dependency>
+
+		<dependency>
 			<groupId>com.sun.jersey</groupId>
 			<artifactId>jersey-server</artifactId>
 			<version>${com.sun.jersey.version}</version>
@@ -249,7 +279,11 @@
 			<artifactId>commons-lang3</artifactId>
 			<version>${org.apache.commons.commons-lang3.version}</version>
 		</dependency>
-
+		<dependency>
+			<groupId>org.supercsv</groupId>
+			<artifactId>SuperCSV</artifactId>
+			<version>${org.supercsv.SuperCSV.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>com.whirlycott</groupId>
 			<artifactId>whirlycache</artifactId>
