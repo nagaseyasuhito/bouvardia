@@ -1,10 +1,12 @@
 package com.github.nagaseyasuhito.dao;
 
-import com.github.nagaseyasuhito.dao.impl.AddressDaoImpl;
 import com.github.nagaseyasuhito.entity.Address;
-import com.github.nagaseyasuhito.fatsia.dao.BaseDao;
-import com.google.inject.ImplementedBy;
+import com.github.nagaseyasuhito.fatsia.dao.impl.BaseDaoImpl;
 
-@ImplementedBy(AddressDaoImpl.class)
-public interface AddressDao extends BaseDao<Address> {
+public class AddressDao extends BaseDaoImpl<Address> {
+
+	@Override
+	public Class<Address> getEntityClass() {
+		return Address.class;
+	}
 }

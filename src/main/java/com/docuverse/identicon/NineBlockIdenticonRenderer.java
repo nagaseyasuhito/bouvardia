@@ -23,14 +23,12 @@ public class NineBlockIdenticonRenderer implements IdenticonRenderer {
 	private static final int DEFAULT_PATCH_SIZE = 20;
 
 	/*
-	 * Each patch is a polygon created from a list of vertices on a 5 by 5 grid.
-	 * Vertices are numbered from 0 to 24, starting from top-left corner of the
-	 * grid, moving left to right and top to bottom.
+	 * Each patch is a polygon created from a list of vertices on a 5 by 5 grid. Vertices are numbered from 0 to 24, starting from top-left corner of the grid, moving left to right and top to bottom.
 	 */
 
 	private static final int PATCH_CELLS = 4;
 
-	private static final int PATCH_GRIDS = PATCH_CELLS + 1;
+	private static final int PATCH_GRIDS = NineBlockIdenticonRenderer.PATCH_CELLS + 1;
 
 	private static final byte PATCH_SYMMETRIC = 1;
 
@@ -66,13 +64,12 @@ public class NineBlockIdenticonRenderer implements IdenticonRenderer {
 
 	private static final byte[] patch14 = { 0, 2, 10, 0 };
 
-	private static final byte[] patchTypes[] = { patch0, patch1, patch2,
-			patch3, patch4, patch5, patch6, patch7, patch8, patch9, patch10,
-			patch11, patch12, patch13, patch14, patch0 };
+	private static final byte[] patchTypes[] = { NineBlockIdenticonRenderer.patch0, NineBlockIdenticonRenderer.patch1, NineBlockIdenticonRenderer.patch2, NineBlockIdenticonRenderer.patch3, NineBlockIdenticonRenderer.patch4,
+			NineBlockIdenticonRenderer.patch5, NineBlockIdenticonRenderer.patch6, NineBlockIdenticonRenderer.patch7, NineBlockIdenticonRenderer.patch8, NineBlockIdenticonRenderer.patch9, NineBlockIdenticonRenderer.patch10,
+			NineBlockIdenticonRenderer.patch11, NineBlockIdenticonRenderer.patch12, NineBlockIdenticonRenderer.patch13, NineBlockIdenticonRenderer.patch14, NineBlockIdenticonRenderer.patch0 };
 
-	private static final byte patchFlags[] = { PATCH_SYMMETRIC, 0, 0, 0,
-			PATCH_SYMMETRIC, 0, 0, 0, PATCH_SYMMETRIC, 0, 0, 0, 0, 0, 0,
-			PATCH_SYMMETRIC + PATCH_INVERTED };
+	private static final byte patchFlags[] = { NineBlockIdenticonRenderer.PATCH_SYMMETRIC, 0, 0, 0, NineBlockIdenticonRenderer.PATCH_SYMMETRIC, 0, 0, 0, NineBlockIdenticonRenderer.PATCH_SYMMETRIC, 0, 0, 0, 0, 0, 0,
+			NineBlockIdenticonRenderer.PATCH_SYMMETRIC + NineBlockIdenticonRenderer.PATCH_INVERTED };
 
 	private static int centerPatchTypes[] = { 0, 4, 8, 15 };
 
@@ -91,41 +88,36 @@ public class NineBlockIdenticonRenderer implements IdenticonRenderer {
 	 * 
 	 */
 	public NineBlockIdenticonRenderer() {
-		setPatchSize(DEFAULT_PATCH_SIZE);
+		this.setPatchSize(NineBlockIdenticonRenderer.DEFAULT_PATCH_SIZE);
 	}
 
 	/**
-	 * Returns the size in pixels at which each patch will be rendered before
-	 * they are scaled down to requested identicon size.
+	 * Returns the size in pixels at which each patch will be rendered before they are scaled down to requested identicon size.
 	 * 
 	 * @return
 	 */
 	public int getPatchSize() {
-		return patchSize;
+		return this.patchSize;
 	}
 
 	/**
-	 * Set the size in pixels at which each patch will be rendered before they
-	 * are scaled down to requested identicon size. Default size is 20 pixels
-	 * which means, for 9-block identicon, a 60x60 image will be rendered and
-	 * scaled down.
+	 * Set the size in pixels at which each patch will be rendered before they are scaled down to requested identicon size. Default size is 20 pixels which means, for 9-block identicon, a 60x60 image will be rendered and scaled down.
 	 * 
 	 * @param size
 	 *            patch size in pixels
 	 */
 	public void setPatchSize(int size) {
 		this.patchSize = size;
-		this.patchOffset = patchSize / 2; // used to center patch shape at
+		this.patchOffset = this.patchSize / 2; // used to center patch shape at
 		// origin.
-		int scale = patchSize / PATCH_CELLS;
-		this.patchShapes = new Polygon[patchTypes.length];
-		for (int i = 0; i < patchTypes.length; i++) {
+		int scale = this.patchSize / NineBlockIdenticonRenderer.PATCH_CELLS;
+		this.patchShapes = new Polygon[NineBlockIdenticonRenderer.patchTypes.length];
+		for (int i = 0; i < NineBlockIdenticonRenderer.patchTypes.length; i++) {
 			Polygon patch = new Polygon();
-			byte[] patchVertices = patchTypes[i];
-			for (int j = 0; j < patchVertices.length; j++) {
-				int v = (int) patchVertices[j];
-				int vx = (v % PATCH_GRIDS * scale) - patchOffset;
-				int vy = (v / PATCH_GRIDS * scale) - patchOffset;
+			byte[] patchVertices = NineBlockIdenticonRenderer.patchTypes[i];
+			for (byte v : patchVertices) {
+				int vx = (v % NineBlockIdenticonRenderer.PATCH_GRIDS * scale) - this.patchOffset;
+				int vy = (v / NineBlockIdenticonRenderer.PATCH_GRIDS * scale) - this.patchOffset;
 				patch.addPoint(vx, vy);
 			}
 			this.patchShapes[i] = patch;
@@ -133,24 +125,23 @@ public class NineBlockIdenticonRenderer implements IdenticonRenderer {
 	}
 
 	public Color getBackgroundColor() {
-		return backgroundColor;
+		return this.backgroundColor;
 	}
 
 	public void setBackgroundColor(Color backgroundColor) {
 		this.backgroundColor = backgroundColor;
 	}
 
+	@Override
 	public BufferedImage render(BigInteger code, int size) {
-		return renderQuilt(code.intValue(), size);
+		return this.renderQuilt(code.intValue(), size);
 	}
 
 	/**
 	 * Returns rendered identicon image for given identicon code.
 	 * 
 	 * <p>
-	 * Size of the returned identicon image is determined by patchSize set using
-	 * {@link setPatchSize}. Since a 9-block identicon consists of 3x3 patches,
-	 * width and height will be 3 times the patch size.
+	 * Size of the returned identicon image is determined by patchSize set using {@link setPatchSize}. Since a 9-block identicon consists of 3x3 patches, width and height will be 3 times the patch size.
 	 * </p>
 	 * 
 	 * @param code
@@ -159,8 +150,9 @@ public class NineBlockIdenticonRenderer implements IdenticonRenderer {
 	 *            image size
 	 * @return identicon image
 	 */
+	@Override
 	public BufferedImage render(int code, int size) {
-		return renderQuilt(code, size);
+		return this.renderQuilt(code, size);
 	}
 
 	protected BufferedImage renderQuilt(int code, int size) {
@@ -180,7 +172,7 @@ public class NineBlockIdenticonRenderer implements IdenticonRenderer {
 		// bit 16-20: blue color component
 		// bit 21-26: green color component
 		// bit 27-31: red color component
-		int middleType = centerPatchTypes[code & 0x3];
+		int middleType = NineBlockIdenticonRenderer.centerPatchTypes[code & 0x3];
 		boolean middleInvert = ((code >> 2) & 0x1) != 0;
 		int cornerType = (code >> 3) & 0x0f;
 		boolean cornerInvert = ((code >> 7) & 0x1) != 0;
@@ -201,41 +193,32 @@ public class NineBlockIdenticonRenderer implements IdenticonRenderer {
 		// shape color and background color are too similar (measured by color
 		// distance).
 		Color strokeColor = null;
-		if (getColorDistance(fillColor, backgroundColor) < 32.0f)
-			strokeColor = getComplementaryColor(fillColor);
+		if (this.getColorDistance(fillColor, this.backgroundColor) < 32.0f) {
+			strokeColor = this.getComplementaryColor(fillColor);
+		}
 
 		// -------------------------------------------------
 		// RENDER AT SOURCE SIZE
 		//
 
-		int sourceSize = patchSize * 3;
-		BufferedImage sourceImage = new BufferedImage(sourceSize, sourceSize,
-				BufferedImage.TYPE_INT_RGB);
+		int sourceSize = this.patchSize * 3;
+		BufferedImage sourceImage = new BufferedImage(sourceSize, sourceSize, BufferedImage.TYPE_INT_RGB);
 		Graphics2D g = sourceImage.createGraphics();
 
 		// middle patch
-		drawPatch(g, patchSize, patchSize, middleType, 0, middleInvert,
-				fillColor, strokeColor);
+		this.drawPatch(g, this.patchSize, this.patchSize, middleType, 0, middleInvert, fillColor, strokeColor);
 
 		// side patchs, starting from top and moving clock-wise
-		drawPatch(g, patchSize, 0, sideType, sideTurn++, sideInvert, fillColor,
-				strokeColor);
-		drawPatch(g, patchSize * 2, patchSize, sideType, sideTurn++,
-				sideInvert, fillColor, strokeColor);
-		drawPatch(g, patchSize, patchSize * 2, sideType, sideTurn++,
-				sideInvert, fillColor, strokeColor);
-		drawPatch(g, 0, patchSize, sideType, sideTurn++, sideInvert, fillColor,
-				strokeColor);
+		this.drawPatch(g, this.patchSize, 0, sideType, sideTurn++, sideInvert, fillColor, strokeColor);
+		this.drawPatch(g, this.patchSize * 2, this.patchSize, sideType, sideTurn++, sideInvert, fillColor, strokeColor);
+		this.drawPatch(g, this.patchSize, this.patchSize * 2, sideType, sideTurn++, sideInvert, fillColor, strokeColor);
+		this.drawPatch(g, 0, this.patchSize, sideType, sideTurn++, sideInvert, fillColor, strokeColor);
 
 		// corner patchs, starting from top left and moving clock-wise
-		drawPatch(g, 0, 0, cornerType, cornerTurn++, cornerInvert, fillColor,
-				strokeColor);
-		drawPatch(g, patchSize * 2, 0, cornerType, cornerTurn++, cornerInvert,
-				fillColor, strokeColor);
-		drawPatch(g, patchSize * 2, patchSize * 2, cornerType, cornerTurn++,
-				cornerInvert, fillColor, strokeColor);
-		drawPatch(g, 0, patchSize * 2, cornerType, cornerTurn++, cornerInvert,
-				fillColor, strokeColor);
+		this.drawPatch(g, 0, 0, cornerType, cornerTurn++, cornerInvert, fillColor, strokeColor);
+		this.drawPatch(g, this.patchSize * 2, 0, cornerType, cornerTurn++, cornerInvert, fillColor, strokeColor);
+		this.drawPatch(g, this.patchSize * 2, this.patchSize * 2, cornerType, cornerTurn++, cornerInvert, fillColor, strokeColor);
+		this.drawPatch(g, 0, this.patchSize * 2, cornerType, cornerTurn++, cornerInvert, fillColor, strokeColor);
 
 		g.dispose();
 
@@ -244,34 +227,32 @@ public class NineBlockIdenticonRenderer implements IdenticonRenderer {
 		//
 		// Bicubic algorithm is used for quality scaling
 
-		BufferedImage targetImage = new BufferedImage(size, size,
-				BufferedImage.TYPE_INT_RGB);
+		BufferedImage targetImage = new BufferedImage(size, size, BufferedImage.TYPE_INT_RGB);
 		g = targetImage.createGraphics();
-		g.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
-				RenderingHints.VALUE_INTERPOLATION_BICUBIC);
+		g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BICUBIC);
 		g.drawImage(sourceImage, 0, 0, size, size, null);
 		g.dispose();
 
 		return targetImage;
 	}
 
-	private void drawPatch(Graphics2D g, int x, int y, int patch, int turn,
-			boolean invert, Color fillColor, Color strokeColor) {
+	private void drawPatch(Graphics2D g, int x, int y, int patch, int turn, boolean invert, Color fillColor, Color strokeColor) {
 		assert patch >= 0;
 		assert turn >= 0;
-		patch %= patchTypes.length;
+		patch %= NineBlockIdenticonRenderer.patchTypes.length;
 		turn %= 4;
-		if ((patchFlags[patch] & PATCH_INVERTED) != 0)
+		if ((NineBlockIdenticonRenderer.patchFlags[patch] & NineBlockIdenticonRenderer.PATCH_INVERTED) != 0) {
 			invert = !invert;
+		}
 
 		// paint background
-		g.setBackground(invert ? fillColor : backgroundColor);
-		g.clearRect(x, y, patchSize, patchSize);
+		g.setBackground(invert ? fillColor : this.backgroundColor);
+		g.clearRect(x, y, this.patchSize, this.patchSize);
 
 		// offset and rotate coordinate space by patch position (x, y) and
 		// 'turn' before rendering patch shape
 		AffineTransform saved = g.getTransform();
-		g.translate(x + patchOffset, y + patchOffset);
+		g.translate(x + this.patchOffset, y + this.patchOffset);
 		g.rotate(Math.toRadians(turn * 90));
 
 		// if stroke color was specified, apply stroke
@@ -279,12 +260,12 @@ public class NineBlockIdenticonRenderer implements IdenticonRenderer {
 		// back color.
 		if (strokeColor != null) {
 			g.setColor(strokeColor);
-			g.draw(patchShapes[patch]);
+			g.draw(this.patchShapes[patch]);
 		}
 
 		// render rotated patch using fore color (back color if inverted)
-		g.setColor(invert ? backgroundColor : fillColor);
-		g.fill(patchShapes[patch]);
+		g.setColor(invert ? this.backgroundColor : fillColor);
+		g.fill(this.patchShapes[patch]);
 
 		// restore rotation
 		g.setTransform(saved);

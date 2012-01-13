@@ -9,11 +9,13 @@ import com.github.nagaseyasuhito.entity.AddressSearchResult;
 import com.google.inject.persist.Transactional;
 
 @Path("address")
-public interface AddressResource {
+public class AddressResource {
 
-    @GET
-    @Path("search")
-    @Produces
-    @Transactional
-    AddressSearchResult searchBy(@QueryParam("query") String query);
+	@GET
+	@Path("search")
+	@Produces
+	@Transactional
+	public AddressSearchResult searchBy(@QueryParam("query") String query) {
+		return null;
+	}
 }

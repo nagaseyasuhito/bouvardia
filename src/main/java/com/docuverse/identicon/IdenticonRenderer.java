@@ -12,8 +12,7 @@ import java.math.BigInteger;
 public interface IdenticonRenderer {
 
 	/**
-	 * Returns rendered identicon image for given identicon code encoded as a
-	 * 32-bit signed integer.
+	 * Returns rendered identicon image for given identicon code encoded as a 32-bit signed integer.
 	 * 
 	 * @param code
 	 *            identicon code
