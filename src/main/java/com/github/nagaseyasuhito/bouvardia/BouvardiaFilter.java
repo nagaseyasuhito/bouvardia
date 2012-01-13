@@ -1,4 +1,4 @@
-package com.github.nagaseyasuhito;
+package com.github.nagaseyasuhito.bouvardia;
 
 import javax.servlet.annotation.WebFilter;
 

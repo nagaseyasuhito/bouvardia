@@ -1,4 +1,4 @@
-package com.github.nagaseyasuhito.api.identicon;
+package com.github.nagaseyasuhito.bouvardia.api.identicon;
 
 import java.awt.image.BufferedImage;
 import java.nio.charset.Charset;
@@ -12,8 +12,8 @@ import javax.ws.rs.Produces;
 
 import com.docuverse.identicon.IdenticonRenderer;
 import com.docuverse.identicon.NineBlockIdenticonRenderer2;
-import com.github.nagaseyasuhito.BouvardiaApplication;
-import com.github.nagaseyasuhito.BouvardiaException;
+import com.github.nagaseyasuhito.bouvardia.BouvardiaApplication;
+import com.github.nagaseyasuhito.bouvardia.BouvardiaException;
 import com.google.common.collect.Ranges;
 
 /**

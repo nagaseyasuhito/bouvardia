@@ -1,4 +1,4 @@
-package com.github.nagaseyasuhito.entity;
+package com.github.nagaseyasuhito.bouvardia.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

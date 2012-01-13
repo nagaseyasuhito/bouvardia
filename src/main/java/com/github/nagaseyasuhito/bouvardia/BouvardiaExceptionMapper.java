@@ -1,4 +1,4 @@
-package com.github.nagaseyasuhito;
+package com.github.nagaseyasuhito.bouvardia;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
 
-import com.github.nagaseyasuhito.entity.Error;
+import com.github.nagaseyasuhito.bouvardia.entity.Error;
 import com.google.common.collect.ImmutableList;
 
 @Provider

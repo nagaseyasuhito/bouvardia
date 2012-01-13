@@ -1,11 +1,11 @@
-package com.github.nagaseyasuhito.api.address;
+package com.github.nagaseyasuhito.bouvardia.api.address;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 
-import com.github.nagaseyasuhito.entity.AddressSearchResult;
+import com.github.nagaseyasuhito.bouvardia.entity.AddressSearchResult;
 import com.google.inject.persist.Transactional;
 
 @Path("address")

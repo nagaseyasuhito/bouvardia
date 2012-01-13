@@ -1,4 +1,4 @@
-package com.github.nagaseyasuhito.api.textimage;
+package com.github.nagaseyasuhito.bouvardia.api.textimage;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -11,7 +11,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
-import com.github.nagaseyasuhito.BouvardiaApplication;
+import com.github.nagaseyasuhito.bouvardia.BouvardiaApplication;
 
 @Path("textimage")
 public class TextImageResource {
