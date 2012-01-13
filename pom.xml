@@ -48,8 +48,8 @@
 			<url>https://repository.jboss.org/nexus/content/groups/public/</url>
 		</repository>
 		<repository>
-			<id>github</id>
-			<url>http://mavenrepository.github.com/</url>
+			<id>mavenrepository.googlecode.com</id>
+			<url>https://mavenrepository.googlecode.com/svn/trunk</url>
 		</repository>
 	</repositories>
 
@@ -102,9 +102,13 @@
 		<com.h2database.h2.version>1.3.162</com.h2database.h2.version>
 		<mysql.mysql-connector-java.version>5.1.18</mysql.mysql-connector-java.version>
 
+		<com.github.nagaseyasuhito.fatsia.version>1.0.8</com.github.nagaseyasuhito.fatsia.version>
+
 		<org.hibernate.version>4.0.0.Final</org.hibernate.version>
 
-		<com.sun.jersey.version>1.9</com.sun.jersey.version>
+		<com.sun.jersey.version>1.9.1</com.sun.jersey.version>
+
+		<com.google.inject.extensions.version>3.0</com.google.inject.extensions.version>
 		<com.google.guava.guava.version>10.0.1</com.google.guava.guava.version>
 		<org.apache.commons.commons-lang3.version>3.1</org.apache.commons.commons-lang3.version>
 		<org.supercsv.SuperCSV.version>1.52</org.supercsv.SuperCSV.version>
@@ -113,7 +117,7 @@
 		<org.slf4j.version>1.6.4</org.slf4j.version>
 		<ch.qos.logback.logback-classic.version>1.0.0</ch.qos.logback.logback-classic.version>
 
-		<javax.servlet.servlet-api.version>2.5</javax.servlet.servlet-api.version>
+		<javax.javaee-api.version>6.0</javax.javaee-api.version>
 
 		<junit.junit.version>4.8.2</junit.junit.version>
 	</properties>
@@ -244,10 +248,11 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-entitymanager</artifactId>
-			<version>${org.hibernate.version}</version>
+			<groupId>com.github.nagaseyasuhito</groupId>
+			<artifactId>fatsia</artifactId>
+			<version>${com.github.nagaseyasuhito.fatsia.version}</version>
 		</dependency>
+
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-c3p0</artifactId>
@@ -268,6 +273,17 @@
 			<groupId>com.sun.jersey</groupId>
 			<artifactId>jersey-json</artifactId>
 			<version>${com.sun.jersey.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.jersey.contribs</groupId>
+			<artifactId>jersey-guice</artifactId>
+			<version>${com.sun.jersey.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.inject.extensions</groupId>
+			<artifactId>guice-persist</artifactId>
+			<version>${com.google.inject.extensions.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.google.guava</groupId>
@@ -317,9 +333,9 @@
 		</dependency>
 
 		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>servlet-api</artifactId>
-			<version>${javax.servlet.servlet-api.version}</version>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>${javax.javaee-api.version}</version>
 			<scope>provided</scope>
 		</dependency>
 

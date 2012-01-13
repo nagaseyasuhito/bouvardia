@@ -2,6 +2,7 @@ package com.github.nagaseyasuhito;
 
 import java.util.Set;
 
+import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 import javax.ws.rs.core.MediaType;
 
@@ -9,6 +10,7 @@ import com.github.nagaseyasuhito.api.identicon.impl.IdenticonResourceImpl;
 import com.github.nagaseyasuhito.api.textimage.impl.TextImageResourceImpl;
 import com.google.common.collect.Sets;
 
+@ApplicationPath("/api")
 public class BouvardiaApplication extends Application {
     /**
      * charsetにutf-8が指定された{@code @Produces}で利用するcontent-type。
