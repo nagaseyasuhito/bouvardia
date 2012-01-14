@@ -4,8 +4,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-import org.apache.commons.lang.StringUtils;
-
 import com.github.nagaseyasuhito.fatsia.entity.BaseEntity;
 
 @Entity
@@ -16,25 +14,25 @@ public class Address extends BaseEntity<Long> {
 	private Long id;
 
 	@Column
-	private String blockNumber;
+	private CharSequence blockNumber;
 
 	@Column
-	private String blockNumberKana;
+	private CharSequence blockNumberKana;
 
 	@Column(nullable = false)
 	private Long cityCode;
 
 	@Column(nullable = false)
-	private String cityName;
+	private CharSequence cityName;
 
 	@Column(nullable = false)
-	private String cityNameKana;
+	private CharSequence cityNameKana;
 
 	@Column(nullable = false, unique = true)
 	private Long code;
 
 	@Column
-	private String note;
+	private CharSequence note;
 
 	@Column(nullable = false)
 	private Boolean obsoleted;
@@ -43,51 +41,51 @@ public class Address extends BaseEntity<Long> {
 	private Boolean office;
 
 	@Column
-	private String officeAddress;
+	private CharSequence officeAddress;
 
 	@Column
-	private String officeName;
+	private CharSequence officeName;
 
 	@Column
-	private String officeNameKana;
+	private CharSequence officeNameKana;
 
 	@Column(nullable = false)
-	private String postalCode;
+	private CharSequence postalCode;
 
 	@Column(nullable = false)
 	private Long prefectureCode;
 
 	@Column(nullable = false)
-	private String prefectureName;
+	private CharSequence prefectureName;
 
 	@Column(nullable = false)
-	private String prefectureNameKana;
+	private CharSequence prefectureNameKana;
 
 	@Column
-	private String streetName;
+	private CharSequence streetName;
 
 	@Column(nullable = false)
 	private Long townCode;
 
 	@Column
-	private String townName;
+	private CharSequence townName;
 
 	@Column
-	private String townNameKana;
+	private CharSequence townNameKana;
 
 	@Column
-	private String townNote;
+	private CharSequence townNote;
 
 	@Override
 	public Long getId() {
 		return this.id;
 	}
 
-	public String getBlockNumber() {
+	public CharSequence getBlockNumber() {
 		return this.blockNumber;
 	}
 
-	public String getBlockNumberKana() {
+	public CharSequence getBlockNumberKana() {
 		return this.blockNumberKana;
 	}
 
@@ -95,11 +93,11 @@ public class Address extends BaseEntity<Long> {
 		return this.cityCode;
 	}
 
-	public String getCityName() {
+	public CharSequence getCityName() {
 		return this.cityName;
 	}
 
-	public String getCityNameKana() {
+	public CharSequence getCityNameKana() {
 		return this.cityNameKana;
 	}
 
@@ -107,23 +105,23 @@ public class Address extends BaseEntity<Long> {
 		return this.code;
 	}
 
-	public String getNote() {
+	public CharSequence getNote() {
 		return this.note;
 	}
 
-	public String getOfficeAddress() {
+	public CharSequence getOfficeAddress() {
 		return this.officeAddress;
 	}
 
-	public String getOfficeName() {
+	public CharSequence getOfficeName() {
 		return this.officeName;
 	}
 
-	public String getOfficeNameKana() {
+	public CharSequence getOfficeNameKana() {
 		return this.officeNameKana;
 	}
 
-	public String getPostalCode() {
+	public CharSequence getPostalCode() {
 		return this.postalCode;
 	}
 
@@ -131,15 +129,15 @@ public class Address extends BaseEntity<Long> {
 		return this.prefectureCode;
 	}
 
-	public String getPrefectureName() {
+	public CharSequence getPrefectureName() {
 		return this.prefectureName;
 	}
 
-	public String getPrefectureNameKana() {
+	public CharSequence getPrefectureNameKana() {
 		return this.prefectureNameKana;
 	}
 
-	public String getStreetName() {
+	public CharSequence getStreetName() {
 		return this.streetName;
 	}
 
@@ -147,15 +145,15 @@ public class Address extends BaseEntity<Long> {
 		return this.townCode;
 	}
 
-	public String getTownName() {
+	public CharSequence getTownName() {
 		return this.townName;
 	}
 
-	public String getTownNameKana() {
+	public CharSequence getTownNameKana() {
 		return this.townNameKana;
 	}
 
-	public String getTownNote() {
+	public CharSequence getTownNote() {
 		return this.townNote;
 	}
 
@@ -171,11 +169,11 @@ public class Address extends BaseEntity<Long> {
 		this.id = id;
 	}
 
-	public void setBlockNumber(String blockNumber) {
+	public void setBlockNumber(CharSequence blockNumber) {
 		this.blockNumber = blockNumber;
 	}
 
-	public void setBlockNumberKana(String blockNumberKana) {
+	public void setBlockNumberKana(CharSequence blockNumberKana) {
 		this.blockNumberKana = blockNumberKana;
 	}
 
@@ -183,11 +181,11 @@ public class Address extends BaseEntity<Long> {
 		this.cityCode = cityCode;
 	}
 
-	public void setCityName(String cityName) {
+	public void setCityName(CharSequence cityName) {
 		this.cityName = cityName;
 	}
 
-	public void setCityNameKana(String cityNameKana) {
+	public void setCityNameKana(CharSequence cityNameKana) {
 		this.cityNameKana = cityNameKana;
 	}
 
@@ -195,7 +193,7 @@ public class Address extends BaseEntity<Long> {
 		this.code = code;
 	}
 
-	public void setNote(String note) {
+	public void setNote(CharSequence note) {
 		this.note = note;
 	}
 
@@ -207,19 +205,19 @@ public class Address extends BaseEntity<Long> {
 		this.office = office;
 	}
 
-	public void setOfficeAddress(String officeAddress) {
+	public void setOfficeAddress(CharSequence officeAddress) {
 		this.officeAddress = officeAddress;
 	}
 
-	public void setOfficeName(String officeName) {
+	public void setOfficeName(CharSequence officeName) {
 		this.officeName = officeName;
 	}
 
-	public void setOfficeNameKana(String officeNameKana) {
+	public void setOfficeNameKana(CharSequence officeNameKana) {
 		this.officeNameKana = officeNameKana;
 	}
 
-	public void setPostalCode(String postalCode) {
+	public void setPostalCode(CharSequence postalCode) {
 		this.postalCode = postalCode;
 	}
 
@@ -227,15 +225,15 @@ public class Address extends BaseEntity<Long> {
 		this.prefectureCode = prefectureCode;
 	}
 
-	public void setPrefectureName(String prefectureName) {
+	public void setPrefectureName(CharSequence prefectureName) {
 		this.prefectureName = prefectureName;
 	}
 
-	public void setPrefectureNameKana(String prefectureNameKana) {
+	public void setPrefectureNameKana(CharSequence prefectureNameKana) {
 		this.prefectureNameKana = prefectureNameKana;
 	}
 
-	public void setStreetName(String streetName) {
+	public void setStreetName(CharSequence streetName) {
 		this.streetName = streetName;
 	}
 
@@ -243,31 +241,15 @@ public class Address extends BaseEntity<Long> {
 		this.townCode = townCode;
 	}
 
-	public void setTownName(String townName) {
+	public void setTownName(CharSequence townName) {
 		this.townName = townName;
 	}
 
-	public void setTownNameKana(String townNameKana) {
+	public void setTownNameKana(CharSequence townNameKana) {
 		this.townNameKana = townNameKana;
 	}
 
-	public void setTownNote(String townNote) {
+	public void setTownNote(CharSequence townNote) {
 		this.townNote = townNote;
-	}
-
-	public String toDisplayString() {
-		StringBuffer stringBuffer = new StringBuffer();
-		stringBuffer.append(StringUtils.stripToEmpty(this.getPrefectureName()));
-		stringBuffer.append(StringUtils.stripToEmpty(this.getCityName()));
-		if (this.isOffice()) {
-			stringBuffer.append(StringUtils.stripToEmpty(this.getOfficeAddress()));
-			stringBuffer.append(StringUtils.stripToEmpty(this.getOfficeName()));
-		} else {
-			stringBuffer.append(StringUtils.stripToEmpty(this.getTownName()));
-			stringBuffer.append(StringUtils.stripToEmpty(this.getBlockNumber()));
-			stringBuffer.append(StringUtils.stripToEmpty(this.getStreetName()));
-		}
-
-		return stringBuffer.toString();
 	}
 }

@@ -12,7 +12,7 @@ import javax.ws.rs.Produces;
 
 import com.docuverse.identicon.IdenticonRenderer;
 import com.docuverse.identicon.NineBlockIdenticonRenderer2;
-import com.github.nagaseyasuhito.bouvardia.BouvardiaApplication;
+import com.github.nagaseyasuhito.bouvardia.BouvardiaConstants;
 import com.github.nagaseyasuhito.bouvardia.BouvardiaException;
 import com.google.common.collect.Ranges;
 
@@ -45,7 +45,7 @@ public class IdenticonResource {
 	 */
 	@GET
 	@Path("{value}")
-	@Produces(BouvardiaApplication.IMAGE_PNG)
+	@Produces(BouvardiaConstants.IMAGE_PNG)
 	public BufferedImage build(@PathParam("value") String value) {
 		return this.build(value, IdenticonResource.DEFAULT_SIZE);
 	}
@@ -63,7 +63,7 @@ public class IdenticonResource {
 	 */
 	@GET
 	@Path("{value}/{size}")
-	@Produces(BouvardiaApplication.IMAGE_PNG)
+	@Produces(BouvardiaConstants.IMAGE_PNG)
 	public BufferedImage build(@PathParam("value") String value, @PathParam("size") Integer size) {
 		if (!Ranges.closed(IdenticonResource.MINIMUM_SIZE, IdenticonResource.MAXIMUM_SIZE).contains(size)) {
 			throw new BouvardiaException(new IllegalArgumentException("invalid size"));

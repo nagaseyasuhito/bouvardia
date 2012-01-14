@@ -1,13 +1,8 @@
 package com.github.nagaseyasuhito.bouvardia;
 
-import java.util.Set;
-
-import javax.ws.rs.core.Application;
 import javax.ws.rs.core.MediaType;
 
-import com.google.common.collect.Sets;
-
-public class BouvardiaApplication extends Application {
+public class BouvardiaConstants {
 	/**
 	 * charsetにutf-8が指定された{@code @Produces}で利用するcontent-type。
 	 */
@@ -22,13 +17,4 @@ public class BouvardiaApplication extends Application {
 	 * {@code @Produces}で利用するcontent-type。
 	 */
 	public static final String IMAGE_PNG = "image/png";
-
-	@Override
-	public Set<Class<?>> getClasses() {
-		Set<Class<?>> classes = Sets.newHashSet();
-		classes.add(BouvardiaExceptionMapper.class);
-
-		return classes;
-	}
-
 }

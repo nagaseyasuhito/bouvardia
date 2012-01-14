@@ -11,13 +11,13 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
-import com.github.nagaseyasuhito.bouvardia.BouvardiaApplication;
+import com.github.nagaseyasuhito.bouvardia.BouvardiaConstants;
 
 @Path("textimage")
 public class TextImageResource {
 	@GET
 	@Path("{value}")
-	@Produces(BouvardiaApplication.IMAGE_PNG)
+	@Produces(BouvardiaConstants.IMAGE_PNG)
 	public BufferedImage build(@PathParam("value") String value) {
 		Graphics calculator = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB).getGraphics();
 		// calculator.setFont(new Font(null, 0, 24));
