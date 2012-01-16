@@ -13,9 +13,9 @@
 	</root>
 
 	<!-- Hibernateが発行するSQL -->
-	<logger name="org.hibernate.SQL">
+	<logger name="org.hibernate.SQL" additivity="false">
 		<level value="${org.hibernate.SQL:-debug}" />
-		<appender-ref ref="stdout" />
+		<!--appender-ref ref="stdout" /-->
 	</logger>
 
 	<!-- Hibernateが発行するSQLのパラメータ -->
