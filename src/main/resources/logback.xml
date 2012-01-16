@@ -11,4 +11,23 @@
 		<level value="warn" />
 		<appender-ref ref="stdout" />
 	</root>
+
+	<!-- Hibernateが発行するSQL -->
+	<logger name="org.hibernate.SQL">
+		<level value="${org.hibernate.SQL:-debug}" />
+		<appender-ref ref="stdout" />
+	</logger>
+
+	<!-- Hibernateが発行するSQLのパラメータ -->
+	<logger name="org.hibernate.type.descriptor.sql.BasicBinder" additivity="false">
+		<level value="${org.hibernate.type.descriptor.sql.BasicBinder:-trace}" />
+		<!--appender-ref ref="stdout" /-->
+	</logger>
+
+	<!-- Hibernateが生成するトランザクション -->
+	<logger name="org.hibernate.transaction.JDBCTransaction" additivity="false">
+		<level value="debug" />
+		<!--appender-ref ref="stdout" /-->
+	</logger>
+
 </configuration>

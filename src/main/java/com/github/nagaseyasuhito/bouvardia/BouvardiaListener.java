@@ -20,23 +20,23 @@ import com.sun.jersey.guice.spi.container.servlet.GuiceContainer;
 @WebListener
 public class BouvardiaListener extends GuiceServletContextListener {
 
-	@WebFilter("/*")
-	public static class BouvardiaFilter extends GuiceFilter {
-	}
+    @WebFilter("/*")
+    public static class BouvardiaFilter extends GuiceFilter {
+    }
 
-	@Override
-	protected Injector getInjector() {
-		return Guice.createInjector(new ServletModule() {
+    @Override
+    protected Injector getInjector() {
+        return Guice.createInjector(new ServletModule() {
 
-			@Override
-			protected void configureServlets() {
-				this.install(new JerseyServletModule());
-				this.install(new JpaPersistModule("default"));
-				Map<String, String> params = ImmutableMap.<String, String> of(PackagesResourceConfig.PROPERTY_PACKAGES, BouvardiaListener.class.getPackage().getName() + ".api");
+            @Override
+            protected void configureServlets() {
+                this.install(new JerseyServletModule());
+                this.install(new JpaPersistModule("default"));
+                Map<String, String> params = ImmutableMap.<String, String> of(PackagesResourceConfig.PROPERTY_PACKAGES, BouvardiaListener.class.getPackage().getName() + ".api");
 
-				this.serve("/api/*").with(GuiceContainer.class, params);
-				this.filter("/api/*").through(PersistFilter.class);
-			}
-		});
-	}
+                this.serve("/api/*").with(GuiceContainer.class, params);
+                this.filter("/api/*").through(PersistFilter.class);
+            }
+        });
+    }
 }

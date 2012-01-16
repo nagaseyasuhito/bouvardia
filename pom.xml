@@ -1,5 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>net.nagaseyasuhito</groupId>
 	<artifactId>bouvardia</artifactId>
@@ -51,6 +50,10 @@
 		<repository>
 			<id>mavenrepository.googlecode.com</id>
 			<url>https://mavenrepository.googlecode.com/svn/trunk</url>
+		</repository>
+		<repository>
+			<id>orangesignal.sourceforge.jp</id>
+			<url>http://orangesignal.sourceforge.jp/maven2/</url>
 		</repository>
 	</repositories>
 
@@ -114,7 +117,7 @@
 		<org.apache.commons.commons-lang3.version>3.1</org.apache.commons.commons-lang3.version>
 		<org.apache.commons.commons-vfs2.version>2.0</org.apache.commons.commons-vfs2.version>
 		<commons-httpclient.commons-httpclient.version>3.1</commons-httpclient.commons-httpclient.version>
-		<org.supercsv.SuperCSV.version>1.52</org.supercsv.SuperCSV.version>
+		<jp.sf.orangesignal.orangesignal-csv.version>1.3.1</jp.sf.orangesignal.orangesignal-csv.version>
 		<com.whirlycott.whirlycache.version>1.0.1</com.whirlycott.whirlycache.version>
 		<com.ibm.icu.icu4j.version>4.8.1.1</com.ibm.icu.icu4j.version>
 
@@ -312,9 +315,9 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.supercsv</groupId>
-			<artifactId>SuperCSV</artifactId>
-			<version>${org.supercsv.SuperCSV.version}</version>
+			<groupId>jp.sf.orangesignal</groupId>
+			<artifactId>orangesignal-csv</artifactId>
+			<version>${jp.sf.orangesignal.orangesignal-csv.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.whirlycott</groupId>
