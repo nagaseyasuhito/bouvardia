@@ -69,6 +69,11 @@
 				<javax.persistence.jdbc.url>jdbc:h2:mem:bouvardia</javax.persistence.jdbc.url>
 				<javax.persistence.jdbc.user />
 				<javax.persistence.jdbc.password />
+
+				<hibernate.search.default.directory_provider>org.hibernate.search.store.impl.RAMDirectoryProvider</hibernate.search.default.directory_provider>
+				<hibernate.search.default.indexBase />
+				<!--hibernate.search.default.directory_provider>org.hibernate.search.store.impl.FSDirectoryProvider</hibernate.search.default.directory_provider> <hibernate.search.default.indexBase>${java.io.tmpdir}</hibernate.search.default.indexBase -->
+
 			</properties>
 		</profile>
 		<profile>
@@ -81,6 +86,9 @@
 				<javax.persistence.jdbc.url>jdbc:mysql://localhost/bouvardia-integration</javax.persistence.jdbc.url>
 				<javax.persistence.jdbc.user />
 				<javax.persistence.jdbc.password />
+
+				<hibernate.search.default.directory_provider>org.hibernate.search.store.impl.RAMDirectoryProvider</hibernate.search.default.directory_provider>
+				<hibernate.search.default.indexBase />
 			</properties>
 		</profile>
 		<profile>
@@ -93,6 +101,9 @@
 				<javax.persistence.jdbc.url>jdbc:mysql://localhost/bouvardia-production</javax.persistence.jdbc.url>
 				<javax.persistence.jdbc.user />
 				<javax.persistence.jdbc.password />
+
+				<hibernate.search.default.directory_provider>org.hibernate.search.store.impl.RAMDirectoryProvider</hibernate.search.default.directory_provider>
+				<hibernate.search.default.indexBase />
 			</properties>
 		</profile>
 	</profiles>

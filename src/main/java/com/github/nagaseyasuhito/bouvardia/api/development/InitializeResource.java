@@ -28,7 +28,7 @@ public class InitializeResource {
             FileObject fileObject = VFS.getManager().resolveFile("zip:http://jusyo.jp/downloads/new/csv/csv_zenkoku.zip!zenkoku.csv");
             Reader reader = new InputStreamReader(fileObject.getContent().getInputStream(), Charset.forName("MS932"));
 
-            this.addressService.bulkImport(reader, false);
+            this.addressService.bulkImport(reader);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
