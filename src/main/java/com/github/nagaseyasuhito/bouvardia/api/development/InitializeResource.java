@@ -36,7 +36,7 @@ public class InitializeResource {
 
     private static final String POSTAL_CODE_TARGET_FILENAME = "csv_zenkoku.zip!zenkoku.csv";
 
-    private static final String STORAGE_URL = "zip:http://github.com/downloads/nagaseyasuhito/bouvardia/";
+    private static final String STORAGE_URL = "zip:https://github.com/nagaseyasuhito/bouvardia/raw/master/data-source/";
 
     @GET
     @Transactional
