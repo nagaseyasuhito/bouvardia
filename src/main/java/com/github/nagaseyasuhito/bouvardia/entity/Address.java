@@ -43,8 +43,8 @@ public class Address extends BaseEntity<Long> {
     @Column
     private String note;
 
-    @Column(nullable = false)
-    private Boolean obsoleted;
+    // @Column(nullable = false)
+    // private Boolean obsoleted;
 
     @Column(nullable = false)
     private Boolean office;
@@ -93,6 +93,12 @@ public class Address extends BaseEntity<Long> {
 
     @Column
     private String townNote;
+
+    @Column
+    private Double latitude;
+
+    @Column
+    private Double longitude;
 
     @Override
     public Long getId() {
@@ -175,9 +181,9 @@ public class Address extends BaseEntity<Long> {
         return this.townNote;
     }
 
-    public Boolean isObsoleted() {
-        return this.obsoleted;
-    }
+    // public Boolean isObsoleted() {
+    // return this.obsoleted;
+    // }
 
     public Boolean isOffice() {
         return this.office;
@@ -211,9 +217,9 @@ public class Address extends BaseEntity<Long> {
         this.note = note;
     }
 
-    public void setObsoleted(Boolean obsoleted) {
-        this.obsoleted = obsoleted;
-    }
+    // public void setObsoleted(Boolean obsoleted) {
+    // this.obsoleted = obsoleted;
+    // }
 
     public void setOffice(Boolean office) {
         this.office = office;
@@ -265,5 +271,21 @@ public class Address extends BaseEntity<Long> {
 
     public void setTownNote(String townNote) {
         this.townNote = townNote;
+    }
+
+    public Double getLatitude() {
+        return this.latitude;
+    }
+
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
+
+    public Double getLongitude() {
+        return this.longitude;
+    }
+
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
     }
 }
