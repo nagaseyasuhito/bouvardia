@@ -51,13 +51,14 @@ public class InitializeResource {
             postalCodeAddresses.addAll(this.addressService.parsePostalCodeData(reader));
         }
 
-        for (String locationTargetFilename : LOCATION_TARGET_FILENAMES) {
-            FileObject fileObject = VFS.getManager().resolveFile(STORAGE_URL + locationTargetFilename);
-            Reader reader = new InputStreamReader(fileObject.getContent().getInputStream(), Charset.forName("MS932"));
-
-            locationAddresses.addAll(this.addressService.parseLocationData(reader));
-        }
-
-        this.addressService.bulkPersist(this.addressService.mergeLocationFromLocationAddressToPostalCodeAddress(postalCodeAddresses, locationAddresses));
+        // for (String locationTargetFilename : LOCATION_TARGET_FILENAMES) {
+        // FileObject fileObject = VFS.getManager().resolveFile(STORAGE_URL + locationTargetFilename);
+        // Reader reader = new InputStreamReader(fileObject.getContent().getInputStream(), Charset.forName("MS932"));
+        //
+        // locationAddresses.addAll(this.addressService.parseLocationData(reader));
+        // }
+        //
+        // this.addressService.bulkPersist(this.addressService.mergeLocationFromLocationAddressToPostalCodeAddress(postalCodeAddresses, locationAddresses));
+        this.addressService.bulkPersist(postalCodeAddresses.subList(0, 1000));
     }
 }

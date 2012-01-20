@@ -5,16 +5,41 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.apache.lucene.document.Document;
+import org.hibernate.search.annotations.ClassBridge;
 import org.hibernate.search.annotations.Field;
 import org.hibernate.search.annotations.Indexed;
+import org.hibernate.search.annotations.Store;
+import org.hibernate.search.bridge.FieldBridge;
+import org.hibernate.search.bridge.LuceneOptions;
 
+import com.github.nagaseyasuhito.bouvardia.entity.Address.AddressBridge;
 import com.github.nagaseyasuhito.fatsia.entity.BaseEntity;
+import com.google.common.base.Strings;
 
 @Entity
 @XmlRootElement
 @Indexed
+@ClassBridge(name = "address", store = Store.YES, impl = AddressBridge.class)
 public class Address extends BaseEntity<Long> {
     private static final long serialVersionUID = 1L;
+
+    public static class AddressBridge implements FieldBridge {
+
+        @Override
+        public void set(String name, Object value, Document document, LuceneOptions luceneOptions) {
+            Address address = (Address) value;
+
+            String fieldValue = Strings.nullToEmpty(address.getPostalCode()) + Strings.nullToEmpty(address.getPrefectureName()) + Strings.nullToEmpty(address.getCityName())
+                    + Strings.nullToEmpty(address.getTownName()) + Strings.nullToEmpty(address.getStreetName()) + Strings.nullToEmpty(address.getBlockNumber())
+                    + Strings.nullToEmpty(address.getOfficeName()) + Strings.nullToEmpty(address.getOfficeAddress());
+
+            org.apache.lucene.document.Field field = new org.apache.lucene.document.Field(name, fieldValue, luceneOptions.getStore(), luceneOptions.getIndex(), luceneOptions.getTermVector());
+            field.setBoost(luceneOptions.getBoost());
+
+            document.add(field);
+        }
+    }
 
     @Column
     @Field

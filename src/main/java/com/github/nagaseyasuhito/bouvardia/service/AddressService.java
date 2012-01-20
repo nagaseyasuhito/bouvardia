@@ -236,7 +236,7 @@ public class AddressService {
     public AddressSearchResult findByQuery(String query, int offset, int maxResults) {
         QueryBuilder addressQueryBuilder = this.fullTextEntityManager.get().getSearchFactory().buildQueryBuilder().forEntity(Address.class).get();
 
-        Query luceneQuery = addressQueryBuilder.keyword().onFields(QUERY_TARGETS).matching(query).createQuery();
+        Query luceneQuery = addressQueryBuilder.keyword().onFields("address").matching(query).createQuery();
         FullTextQuery fullTextQuery = this.fullTextEntityManager.get().createFullTextQuery(luceneQuery, this.addressDao.getEntityClass());
         fullTextQuery.setFirstResult(offset * maxResults);
         fullTextQuery.setMaxResults(maxResults);
