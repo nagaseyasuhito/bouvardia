@@ -7,7 +7,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.inject.Inject;
-import javax.inject.Provider;
 
 import jp.sf.orangesignal.csv.Csv;
 import jp.sf.orangesignal.csv.CsvConfig;
@@ -46,7 +45,7 @@ public class AddressService {
     private AddressDao addressDao;
 
     @Inject
-    private Provider<FullTextEntityManager> fullTextEntityManager;
+    private FullTextEntityManager fullTextEntityManager;
 
     private static final String[] QUERY_TARGETS = new String[] {"postalCode", "prefectureName", "prefectureNameKana", "cityName", "cityNameKana", "townName", "townNameKana", "streetName",
             "blockNumber", "blockNumberKana", "officeName", "officeNameKana", "officeAddress" };
@@ -234,10 +233,10 @@ public class AddressService {
 
     @SuppressWarnings("unchecked")
     public AddressSearchResult findByQuery(String query, int offset, int maxResults) {
-        QueryBuilder addressQueryBuilder = this.fullTextEntityManager.get().getSearchFactory().buildQueryBuilder().forEntity(Address.class).get();
+        QueryBuilder addressQueryBuilder = this.fullTextEntityManager.getSearchFactory().buildQueryBuilder().forEntity(Address.class).get();
 
-        Query luceneQuery = addressQueryBuilder.keyword().onFields("address").matching(query).createQuery();
-        FullTextQuery fullTextQuery = this.fullTextEntityManager.get().createFullTextQuery(luceneQuery, this.addressDao.getEntityClass());
+        Query luceneQuery = addressQueryBuilder.phrase().onField("address").ignoreFieldBridge().sentence(query).createQuery();
+        FullTextQuery fullTextQuery = this.fullTextEntityManager.createFullTextQuery(luceneQuery, this.addressDao.getEntityClass());
         fullTextQuery.setFirstResult(offset * maxResults);
         fullTextQuery.setMaxResults(maxResults);
 
