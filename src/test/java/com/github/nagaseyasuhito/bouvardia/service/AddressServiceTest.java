@@ -20,20 +20,20 @@ public class AddressServiceTest {
     public void parseLocationDataSuccessed() throws IOException {
         AddressService addressService = new AddressService();
 
-        FileObject fileObject = VFS.getManager().resolveFile("zip:https://github.com/downloads/nagaseyasuhito/bouvardia/01000-04.1b.zip!01_2010.csv");
+        FileObject fileObject = VFS.getManager().resolveFile("zip:https://github.com/nagaseyasuhito/bouvardia/raw/master/data-source/01000-04.1b.zip!01_2010.csv");
         Reader reader = new InputStreamReader(fileObject.getContent().getInputStream(), Charset.forName("MS932"));
 
-        List<Address> addresses = addressService.parseLocationData(reader);
+        addressService.parseLocationData(reader);
     }
 
     @Test
     public void parsePostalCodeDataSuccessed() throws IOException {
         AddressService addressService = new AddressService();
 
-        FileObject fileObject = VFS.getManager().resolveFile("zip:https://github.com/downloads/nagaseyasuhito/bouvardia/csv_zenkoku.zip!zenkoku.csv");
+        FileObject fileObject = VFS.getManager().resolveFile("zip:https://github.com/nagaseyasuhito/bouvardia/raw/master/data-source/csv_zenkoku.zip!zenkoku.csv");
         Reader reader = new InputStreamReader(fileObject.getContent().getInputStream(), Charset.forName("MS932"));
 
-        List<Address> addresses = addressService.parsePostalCodeData(reader);
+        addressService.parsePostalCodeData(reader);
     }
 
     @Test
@@ -42,22 +42,20 @@ public class AddressServiceTest {
 
         List<Address> locationAddresses, postalCodeAddresses;
         {
-            FileObject fileObject = VFS.getManager().resolveFile("zip:https://github.com/downloads/nagaseyasuhito/bouvardia/01000-04.1b.zip!01_2010.csv");
+            FileObject fileObject = VFS.getManager().resolveFile("zip:https://github.com/nagaseyasuhito/bouvardia/raw/master/data-source/01000-04.1b.zip!01_2010.csv");
             Reader reader = new InputStreamReader(fileObject.getContent().getInputStream(), Charset.forName("MS932"));
 
             locationAddresses = addressService.parseLocationData(reader);
         }
 
         {
-            FileObject fileObject = VFS.getManager().resolveFile("zip:https://github.com/downloads/nagaseyasuhito/bouvardia/csv_zenkoku.zip!zenkoku.csv");
+            FileObject fileObject = VFS.getManager().resolveFile("zip:https://github.com/nagaseyasuhito/bouvardia/raw/master/data-source/csv_zenkoku.zip!zenkoku.csv");
             Reader reader = new InputStreamReader(fileObject.getContent().getInputStream(), Charset.forName("MS932"));
 
             postalCodeAddresses = addressService.parsePostalCodeData(reader);
         }
 
-        List<Address> addresses = addressService.mergeLocationFromLocationAddressToPostalCodeAddress(postalCodeAddresses, locationAddresses);
-
-        // CsvManagerFactory.newCsvManager().save(addresses, Address.class).to(new OutputStreamWriter(new FileOutputStream(File.createTempFile("address", ".csv")), Charset.forName("MS932")));
+        addressService.mergeLocationFromLocationAddressToPostalCodeAddress(postalCodeAddresses, locationAddresses);
     }
 
     @Test

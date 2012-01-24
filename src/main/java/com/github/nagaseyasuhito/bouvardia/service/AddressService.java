@@ -47,9 +47,6 @@ public class AddressService {
     @Inject
     private FullTextEntityManager fullTextEntityManager;
 
-    private static final String[] QUERY_TARGETS = new String[] {"postalCode", "prefectureName", "prefectureNameKana", "cityName", "cityNameKana", "townName", "townNameKana", "streetName",
-            "blockNumber", "blockNumberKana", "officeName", "officeNameKana", "officeAddress" };
-
     public void bulkPersist(List<Address> addresses) throws IOException {
         for (Address address : addresses) {
             this.addressDao.persist(address);
