@@ -70,8 +70,8 @@
 				<javax.persistence.jdbc.user />
 				<javax.persistence.jdbc.password />
 
-				<!--hibernate.search.default.directory_provider>org.hibernate.search.store.impl.FSDirectoryProvider</hibernate.search.default.directory_provider-->
-				<!--hibernate.search.default.indexBase>${java.io.tmpdir}/bouvardia</hibernate.search.default.indexBase-->
+				<!--hibernate.search.default.directory_provider>org.hibernate.search.store.impl.FSDirectoryProvider</hibernate.search.default.directory_provider -->
+				<!--hibernate.search.default.indexBase>${java.io.tmpdir}/bouvardia</hibernate.search.default.indexBase -->
 				<hibernate.search.default.directory_provider>org.hibernate.search.store.impl.RAMDirectoryProvider</hibernate.search.default.directory_provider>
 				<hibernate.search.default.indexBase />
 			</properties>
@@ -148,12 +148,32 @@
 				<configuration>
 					<source>1.6</source>
 					<target>1.6</target>
-					<compilerArgument>-implicit:class</compilerArgument>
-					<annotationProcessors>
-						<annotationProcessor>com.github.nagaseyasuhito.fatsia.FatsiaAnnotationProcessor</annotationProcessor>
-					</annotationProcessors>
-					<showWarnings>true</showWarnings>
+					<!--compilerArgument>-implicit:class</compilerArgument-->
+					<!--annotationProcessors-->
+						<!--annotationProcessor>com.github.nagaseyasuhito.fatsia.FatsiaAnnotationProcessor</annotationProcessor-->
+					<!--/annotationProcessors-->
+					<!--showWarnings>true</showWarnings-->
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.bsc.maven</groupId>
+				<artifactId>maven-processor-plugin</artifactId>
+				<version>2.0.5</version>
+				<executions>
+					<execution>
+						<id>process</id>
+						<goals>
+							<goal>process</goal>
+						</goals>
+						<phase>generate-sources</phase>
+						<configuration>
+							<compilerArguments>-encoding ${project.build.sourceEncoding}</compilerArguments>
+							<processors>
+								<processor>com.github.nagaseyasuhito.fatsia.FatsiaAnnotationProcessor</processor>
+							</processors>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
