@@ -256,10 +256,6 @@
 				<groupId>br.com.ingenieux</groupId>
 				<artifactId>beanstalk-maven-plugin</artifactId>
 				<version>0.2.5</version>
-				<configuration>
-					<s3Bucket>${project.artifactId}</s3Bucket>
-					<s3Key>${beanstalk.versionLabel}.war</s3Key>
-				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -267,7 +263,7 @@
 				<version>2.2.2</version>
 				<configuration>
 					<tagNameFormat>@{project.version}</tagNameFormat>
-					<goals>clean package beanstalk:upload-source-bundle
+					<goals>deploy beanstalk:upload-source-bundle
 						beanstalk:create-application-version beanstalk:update-environment</goals>
 				</configuration>
 			</plugin>
